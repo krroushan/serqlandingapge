@@ -38,7 +38,7 @@ const FloatingStickyCTAButton = () => {
     };
 
     return (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
             {/* Expanded content - only visible when expanded */}
             {isExpanded && (
                 <div className="mb-4 bg-white rounded-lg shadow-xl p-4 max-w-xs animate-fade-in-up w-full">
