@@ -78,6 +78,16 @@ const FloatingCTAForm = () => {
         setHasBeenDismissed(true);
     };
 
+    // New function to handle video modal
+    const [showVideoModal, setShowVideoModal] = useState(false);
+
+    const handleWatchVideo = () => {
+        // You would replace this URL with your actual video URL
+        setShowVideoModal(true);
+        // Optional: track analytics for video views
+        console.log('Video watch requested');
+    };
+
     if (!isVisible) return null;
 
     return (
@@ -98,7 +108,7 @@ const FloatingCTAForm = () => {
                         <div className={`p-4 ${formVariant === 1 ? 'bg-gradient-to-r from-indigo-600 to-purple-600' : 'bg-gradient-to-r from-yellow-500 to-amber-500'}`}>
                             <div className="flex justify-between items-center">
                                 <h3 className="text-white font-bold text-lg">
-                                    {formVariant === 1 ? "Find Service Professionals" : "Limited Time Offer!"}
+                                    {formVariant === 1 ? "See How It Works" : "Special Offer Inside!"}
                                 </h3>
                                 <button 
                                     onClick={handleDismiss}
@@ -112,8 +122,8 @@ const FloatingCTAForm = () => {
                             </div>
                             <p className="text-white/90 text-sm mt-1">
                                 {formVariant === 1 
-                                    ? "Get matched with trusted professionals in your area" 
-                                    : "Book now and get 20% off your first service!"}
+                                    ? "Choose how you'd like to learn more about our platform" 
+                                    : "Book a demo today and get 20% off your first month!"}
                             </p>
                         </div>
 
@@ -126,83 +136,166 @@ const FloatingCTAForm = () => {
                                     </svg>
                                 </div>
                                 <h4 className="text-xl font-semibold text-gray-800 mb-2">Thank You!</h4>
-                                <p className="text-gray-600">We'll connect you with a service professional shortly.</p>
+                                <p className="text-gray-600">Our team will contact you shortly to schedule your demo.</p>
+                            </div>
+                        ) : showVideoModal ? (
+                            <div className="p-4">
+                                <div className="aspect-video bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
+                                    {/* This is a placeholder for the actual video embed */}
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="text-center">
+                                            <svg className="w-16 h-16 text-indigo-600 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                            <p className="text-gray-500">Video placeholder</p>
+                                            <p className="text-gray-400 text-sm">Replace with your actual video embed</p>
+                                        </div>
+                                    </div>
+                                    {/* You would replace this with your actual video iframe */}
+                                    {/* <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" className="w-full h-full" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                                </div>
+                                <div className="flex gap-3">
+                                    <button 
+                                        type="button"
+                                        onClick={() => setShowVideoModal(false)}
+                                        className="flex-1 py-2.5 px-4 rounded-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition-all duration-300"
+                                    >
+                                        Back to Options
+                                    </button>
+                                    <button 
+                                        type="button" 
+                                        onClick={() => {
+                                            setShowVideoModal(false);
+                                            setIsFormExpanded(true);
+                                        }}
+                                        className="py-2.5 px-4 rounded-lg font-medium text-indigo-700 border border-indigo-300 bg-indigo-50 hover:bg-indigo-100 transition-colors"
+                                    >
+                                        Book Demo
+                                    </button>
+                                </div>
                             </div>
                         ) : (
                             <>
-                                {/* Form toggle button removed - always show form in modal mode */}
-                                {/* Expanded form */}
-                                <div className="p-4">
-                                    <form onSubmit={handleSubmit}>
-                                        <div className="mb-3">
-                                            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-                                            <input 
-                                                type="text" 
-                                                id="name" 
-                                                name="name" 
-                                                value={formData.name}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                                                placeholder="Enter your name"
-                                                required
-                                            />
-                                        </div>
+                                <div className="p-5">
+                                    {/* Two-option selection */}
+                                    <div className="space-y-3">
+                                        <button 
+                                            onClick={handleWatchVideo}
+                                            className="w-full py-3 px-4 rounded-lg flex items-center justify-between border border-gray-200 hover:border-indigo-300 hover:bg-indigo-50/50 transition-all group"
+                                        >
+                                            <div className="flex items-center">
+                                                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3 text-purple-600 group-hover:bg-purple-200 transition-colors">
+                                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M8 5v14l11-7z" />
+                                                    </svg>
+                                                </div>
+                                                <div className="text-left">
+                                                    <h4 className="font-medium text-gray-800">Watch Video</h4>
+                                                    <p className="text-xs text-gray-500">See our platform in action (2 min)</p>
+                                                </div>
+                                            </div>
+                                            <svg className="w-5 h-5 text-gray-400 group-hover:text-indigo-600 group-hover:transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
                                         
-                                        <div className="mb-3">
-                                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                            <input 
-                                                type="tel" 
-                                                id="phone" 
-                                                name="phone" 
-                                                value={formData.phone}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                                                placeholder="Enter your phone number"
-                                                required
-                                            />
-                                        </div>
-                                        
-                                        <div className="mb-4">
-                                            <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
-                                            <select 
-                                                id="service" 
-                                                name="service" 
-                                                value={formData.service}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                                                required
-                                            >
-                                                <option value="">Select a service</option>
-                                                <option value="electrical">Electrical Services</option>
-                                                <option value="plumbing">Plumbing</option>
-                                                <option value="cleaning">Home Cleaning</option>
-                                                <option value="repairs">Repairs & Maintenance</option>
-                                                <option value="solar">Solar Installation</option>
-                                                <option value="ac">AC Services</option>
-                                            </select>
-                                        </div>
-                                        
-                                        <div className="flex gap-3">
-                                            <button 
-                                                type="submit" 
-                                                className={`flex-1 py-2.5 px-4 rounded-lg font-medium text-white transition-all duration-300 ${
-                                                    formVariant === 1 
-                                                        ? 'bg-indigo-600 hover:bg-indigo-700' 
-                                                        : 'bg-amber-500 hover:bg-amber-600'
-                                                } shadow-md hover:shadow-lg transform hover:-translate-y-0.5`}
-                                            >
-                                                Find Professionals
-                                            </button>
+                                        <button 
+                                            onClick={() => setIsFormExpanded(true)}
+                                            className="w-full py-3 px-4 rounded-lg flex items-center justify-between border border-gray-200 hover:border-indigo-300 hover:bg-indigo-50/50 transition-all group"
+                                        >
+                                            <div className="flex items-center">
+                                                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3 text-green-600 group-hover:bg-green-200 transition-colors">
+                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                    </svg>
+                                                </div>
+                                                <div className="text-left">
+                                                    <h4 className="font-medium text-gray-800">Book Live Demo</h4>
+                                                    <p className="text-xs text-gray-500">Schedule a personalized walkthrough</p>
+                                                </div>
+                                            </div>
+                                            <svg className="w-5 h-5 text-gray-400 group-hover:text-indigo-600 group-hover:transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Expanded booking form */}
+                                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isFormExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                    <div className="p-4 pt-0">
+                                        <div className="w-full h-px bg-gray-200 mb-4"></div>
+                                        <form onSubmit={handleSubmit}>
+                                            <div className="mb-3">
+                                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                                                <input 
+                                                    type="text" 
+                                                    id="name" 
+                                                    name="name" 
+                                                    value={formData.name}
+                                                    onChange={handleChange}
+                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+                                                    placeholder="Enter your name"
+                                                    required
+                                                />
+                                            </div>
                                             
-                                            <button 
-                                                type="button" 
-                                                onClick={handleDismiss}
-                                                className="py-2.5 px-4 rounded-lg font-medium text-gray-700 border border-gray-300 hover:bg-gray-50 transition-colors"
-                                            >
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    </form>
+                                            <div className="mb-3">
+                                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                                <input 
+                                                    type="tel" 
+                                                    id="phone" 
+                                                    name="phone" 
+                                                    value={formData.phone}
+                                                    onChange={handleChange}
+                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+                                                    placeholder="Enter your phone number"
+                                                    required
+                                                />
+                                            </div>
+                                            
+                                            <div className="mb-4">
+                                                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
+                                                <select 
+                                                    id="service" 
+                                                    name="service" 
+                                                    value={formData.service}
+                                                    onChange={handleChange}
+                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+                                                    required
+                                                >
+                                                    <option value="">Select a service</option>
+                                                    <option value="electrical">Electrical Services</option>
+                                                    <option value="plumbing">Plumbing</option>
+                                                    <option value="cleaning">Home Cleaning</option>
+                                                    <option value="repairs">Repairs & Maintenance</option>
+                                                    <option value="solar">Solar Installation</option>
+                                                    <option value="ac">AC Services</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div className="flex gap-3">
+                                                <button 
+                                                    type="submit" 
+                                                    className={`flex-1 py-2.5 px-4 rounded-lg font-medium text-white transition-all duration-300 ${
+                                                        formVariant === 1 
+                                                            ? 'bg-indigo-600 hover:bg-indigo-700' 
+                                                            : 'bg-amber-500 hover:bg-amber-600'
+                                                    } shadow-md hover:shadow-lg transform hover:-translate-y-0.5`}
+                                                >
+                                                    Book My Demo
+                                                </button>
+                                                
+                                                <button 
+                                                    type="button" 
+                                                    onClick={() => setIsFormExpanded(false)}
+                                                    className="py-2.5 px-4 rounded-lg font-medium text-gray-700 border border-gray-300 hover:bg-gray-50 transition-colors"
+                                                >
+                                                    Back
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </>
                         )}
