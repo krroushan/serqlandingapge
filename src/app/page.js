@@ -15,6 +15,8 @@ import CTASection from "@/components/CTASection";
 import Pricing from "@/components/Pricing";
 import FAQSection from "@/components/FAQSection";
 import FloatingStickyCTAButton from "@/components/FloatingStickyCTAButton";
+import FloatingCTAForm from "@/components/FloatingCTAForm";
+
 export default function Home() {
   // Animation setup
   useEffect(() => {
@@ -101,6 +103,9 @@ export default function Home() {
 
       {/* Floating Sticky CTA Button */}
       <FloatingStickyCTAButton />
+
+      {/* Floating CTA Form */}
+      <FloatingCTAForm />
 
       {/* Back to top button with animation */}
       <a 
