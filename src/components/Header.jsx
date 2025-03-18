@@ -14,7 +14,6 @@ const Header = () => {
               <span className="text-indigo-900">Serve</span>
               <span className="text-pink-500">Q</span>
             </h1>
-            <div className="text-xs text-gray-500 ml-2 mt-auto pb-1">by Vyapar</div>
           </div>
           
           {/* Navigation */}
