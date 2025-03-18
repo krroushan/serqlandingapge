@@ -1,25 +1,16 @@
 // src/components/HeroSection.jsx
 
-const HeroSection = () => {
+const MobileHeroSection = () => {
     return (
-        <section className="pt-16 pb-24 bg-gradient-to-br from-white via-indigo-50/30 to-purple-50/30 relative overflow-hidden">
-            {/* Decorative background elements */}
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366F1' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}></div>
-            </div>
-
-            {/* Animated background blobs */}
-            <div className="absolute top-20 left-1/4 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-            <div className="absolute -bottom-32 right-1/4 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-            <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-
-            <div className="container mx-auto px-4 max-w-6xl relative z-10">
-                <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    {/* LEFT COLUMN - CONTENT */}
-                    <div className="order-2 md:order-1 relative">
-
-                        {/* Feature badge - hidden on mobile, visible on md screens and larger */}
-                        <div className="hidden md:inline-flex items-center mb-6 px-3 py-1 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-full shadow-sm">
+        <section className="relative overflow-hidden bg-gradient-to-br from-white via-indigo-50/30 to-purple-50/30">
+            <div className="container mx-auto px-4 sm:px-6 py-12 md:py-20">
+                {/* Mobile-first layout structure */}
+                <div className="flex flex-col items-center text-center lg:text-left lg:flex-row lg:justify-between">
+                    
+                    {/* Content Column - Feature badge appears at top in both mobile and desktop */}
+                    <div className="w-full lg:w-1/2 lg:pr-10 z-10">
+                        {/* Feature badge - positioned at top */}
+                        <div className="inline-flex items-center mb-4 md:mb-6 px-3 py-1 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-full shadow-sm">
                             <div className="flex items-center">
                                 <div className="flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 mr-2">
                                     <svg className="h-2.5 w-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -29,18 +20,13 @@ const HeroSection = () => {
                                 <span className="text-xs font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-purple-700 uppercase">Enterprise-Grade Solution</span>
                             </div>
                         </div>
-
-                        {/* Enhanced headline with underline decoration */}
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gray-900">
-                            The only <span className="relative inline-block">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">telecalling dialer</span>
-                                <svg className="absolute -bottom-2 w-full" xmlns="http://www.w3.org/2000/svg" width="172" height="9" viewBox="0 0 172 9" fill="none">
-                                    <path d="M1 8C17.8333 2.66667 92.5 -4.8 171 8" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            </span>
-                            <br />and CRM you'll <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">ever</span> need.
-              </h1>
-              
+                        
+                        {/* Headline */}
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+                            <span className="block">Transform Your Service</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Management Experience</span>
+                        </h1>
+                        
                         {/* Enhanced subheading */}
                         <p className="text-xl text-gray-600 mb-8 max-w-lg leading-relaxed">
                             A full-featured Dialer and Telecalling CRM to <span className="font-semibold text-indigo-700">upgrade productivity</span> and <span className="font-semibold text-indigo-700">supercharge sales</span> with advanced analytics.
@@ -69,8 +55,33 @@ const HeroSection = () => {
                                 <span className="font-medium">Watch Demo</span>
                 </a>
               </div>
-                      
-
+              
+                        {/* Enhanced feature cards */}
+                        {/* <div className="mb-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {[
+                                    { text: "Dedicated customer support", badge: "24/7" },
+                                    { text: "1000+ Integrations", badge: "API" },
+                                    { text: "40000+ Happy users", badge: "Global" },
+                                    { text: "99.9% uptime guarantee", badge: "SLA" }
+                ].map((item, index) => (
+                                    <div key={index} className="group flex items-center bg-white/80 backdrop-blur-sm p-3 rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all duration-200">
+                                        <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-full p-1.5 mr-3 shadow-md group-hover:scale-110 transition-transform duration-300">
+                                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                                        <div className="flex-1">
+                                            <span className="text-gray-700 font-medium group-hover:text-indigo-700 transition-colors duration-200">{item.text}</span>
+                                        </div>
+                                        {item.badge && (
+                                            <span className="text-xs font-semibold bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-full group-hover:bg-indigo-200 transition-colors duration-200">{item.badge}</span>
+                                        )}
+                  </div>
+                ))}
+              </div>
+                        </div>
+                        
                         {/* Setup badge */}
                         {/* <div className="inline-flex items-center bg-gradient-to-r from-indigo-50 to-purple-50 px-5 py-3 rounded-lg border border-indigo-100 shadow-sm transform hover:-translate-y-1 transition-transform duration-300">
                             <svg className="w-6 h-6 mr-3 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
@@ -105,21 +116,10 @@ const HeroSection = () => {
                                 </p>
                             </div>
                         </div> */}
-            </div>
-            
-                    {/* RIGHT COLUMN - VISUALS */}
-            <div className="order-1 md:order-2 relative">
-
-            <div className="inline-flex items-center mb-6 px-3 py-1 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-full shadow-sm md:hidden">
-                            <div className="flex items-center">
-                                <div className="flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 mr-2">
-                                    <svg className="h-2.5 w-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                <span className="text-xs font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-purple-700 uppercase">Enterprise-Grade Solution</span>
-                            </div>
-                        </div>
+                    </div>
+                    
+                    {/* Image/Visuals Column */}
+                    <div className="w-full lg:w-1/2 mt-10 lg:mt-0">
                         {/* Main dashboard with premium styling */}
                         <div className="relative group transform perspective-1000">
                             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl blur-lg opacity-30 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -326,5 +326,5 @@ const HeroSection = () => {
     );
 }
 
-export default HeroSection;
+export default MobileHeroSection;
 

@@ -16,7 +16,7 @@ import Pricing from "@/components/Pricing";
 import FAQSection from "@/components/FAQSection";
 import FloatingStickyCTAButton from "@/components/FloatingStickyCTAButton";
 import FloatingCTAForm from "@/components/FloatingCTAForm";
-
+import MobileHeroSection from "@/components/MobileHeroSection";
 export default function Home() {
   // Animation setup
   useEffect(() => {
@@ -72,7 +72,10 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection/>
+
+      {/* Mobile Hero Section */}
+      {/* <MobileHeroSection/> */}
 
       {/* Request Demo CTA - matches image style */}
       {/* <DemoCta /> */}
